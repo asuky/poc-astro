@@ -20,3 +20,21 @@
 - hot/live reload する？
 - build したときの生成物の多寡（レンタルサーバだと inode 節約でファイル数制限があることもある）
 - Wordpress から SSG する方法は？
+
+
+## 使用方法
+ある程度のステップで copilot に下記依頼すること。
+```
+ここまででまだまとめられてない会話の内容を prompts/YYYYMMDD-枝番.md にまとめてください。
+フォーマットは問いませんが、こちらの発言内容自体は identical に記載してください。
+```
+### 前提
+- Docker Compose
+
+### 手順
+- cp -pr .env.template .env して適宜修正
+- cp -pr php/php.ini-dev php.ini
+- docker compose up -d
+
+## 関連リンク
+- [日本語ドキュメント](https://docs.astro.build/ja)

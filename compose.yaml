@@ -1,0 +1,44 @@
+services:
+    wp:
+        build:
+            context: .
+            dockerfile: docker/Dockerfile_wp
+            args:
+                UID: ${UID}
+                GID: ${GID}
+        ports:
+            - 8080:80
+        volumes:
+            - type: bind
+              source: ./php/php.ini
+              target: /usr/local/etc/php/php.ini
+            - ./wp:/var/www/html
+        env_file:
+            - ./.env
+        depends_on:
+            - db
+        networks:
+            - internal
+
+    db:
+        build:
+            context: .
+            dockerfile: docker/Dockerfile_db
+        restart: always
+        env_file:
+            - ./.env
+        volumes:
+            - ./.dbdata:/var/lib/mysql
+        networks:
+            - internal
+
+    pma:
+        image: phpmyadmin/phpmyadmin:latest
+        ports:
+            - "8081:80"
+        networks:
+            - internal
+
+networks:
+    internal:
+        driver: bridge

@@ -1,0 +1,12 @@
+*
+!*/
+!/.gitignore
+!/composer.json
+!/composer.lock
+.DS_Store
+*.swp
+.htenv
+
+wp-content/plugins/*
+!wp-content/themes/poc-astro/**
+wp-content/themes/poc-astro/.env
