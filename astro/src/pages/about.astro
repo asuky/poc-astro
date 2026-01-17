@@ -1,0 +1,40 @@
+---
+import '../styles/global.css';
+import Welcome from '../components/Welcome.astro';
+import Header from '../components/Header.astro';
+import Layout from '../layouts/Layout.astro';
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const name = "fugafuga"
+const dict = {
+    name: "hoge",
+    name2: "piyo",
+    name3: "fuga",
+    show: true
+}
+const mycolor = "navy"
+---
+
+<Layout>
+   <style define:vars={{mycolor}}>
+      h1 {
+        color: var(--mycolor);
+        font-size: 4rem;
+      }
+    </style>
+	<Header />
+  <h1>HogeHoge</h1>
+	<p>piyopiyo piyopiyo</p>
+  
+    <p>Name: {name}</p>
+    <p>name2: {dict.name2}</p>
+    {dict.show && <p>showing that depends on bool value</p>}
+    <a href="/posts/post-1">記事1</a>
+    <a href="/posts/post-2">記事2</a>
+    <a href="/posts/post3">記事3</a>
+	<Welcome />
+  <script>
+      import "../scripts/menu.js";
+  </script>
+</Layout>
